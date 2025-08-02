@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The AI Reshaping of Work</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The infographic is structured as a top-to-bottom narrative scroll. It begins with a high-impact "hook" (The Scale of Change), moves to the central conflict (Displacement vs. Creation), presents the solution (The New Skill Economy), provides evidence (Industry Transformation), and ends with a call to action (Strategic Imperatives). This linear flow guides the user through the report's key themes logically, making complex data easy to digest in a single, continuous experience. -->
+    <!-- Visualization & Content Choices: 
+        - Data Point: 300M jobs exposed -> Goal: Inform -> Viz: Single Big Number -> Justification: Creates a powerful initial impact.
+        - Data Point: Net Job Creation (170M vs 92M) -> Goal: Compare -> Viz: Donut Chart (Chart.js) -> Justification: Visually represents the net positive outcome clearly.
+        - Data Point: Salary Premiums (28% vs 43%) -> Goal: Compare -> Viz: Bar Chart (Chart.js) -> Justification: Effectively compares the value of acquiring one vs. multiple AI skills.
+        - Data Point: Productivity Gains by Industry -> Goal: Compare -> Viz: Horizontal Bar Chart (Chart.js) -> Justification: Allows for easy ranking and comparison of efficiency gains across different sectors.
+        - Data Point: At-Risk vs. Safe Jobs -> Goal: Organize -> Viz: Two-column HTML list -> Justification: A simple, clear, and scannable way to present categorical data without complex charts.
+        - Data Point: Strategic Imperatives -> Goal: Organize -> Viz: Three-column HTML/CSS cards -> Justification: Breaks down the recommendations into distinct, digestible blocks for different audiences.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #bc5090, #ff6361);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <header class="text-center my-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-2" style="color: #003f5c;">The AI Revolution and Your Career</h1>
+            <p class="text-lg text-gray-600">Generative AI is reshaping the global workforce. Discover the challenges, opportunities, and the path forward.</p>
+        </header>
+
+        <section class="bg-white rounded-xl shadow-lg p-8 mb-12 text-center">
+            <h2 class="text-2xl font-bold mb-4" style="color: #58508d;">The Scale of Change is Unprecedented</h2>
+            <p class="text-gray-600 mb-6">Generative AI's ability to automate cognitive tasks is set to impact a vast number of jobs globally, accelerating a "great reshuffling" of roles and skills.</p>
+            <div class="text-7xl md:text-8xl font-extrabold gradient-text">300 Million</div>
+            <p class="mt-4 font-semibold text-xl text-gray-700">Full-time jobs worldwide could be exposed to automation by GenAI.</p>
+            <p class="text-sm text-gray-500 mt-2">(Source: Goldman Sachs)</p>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #003f5c;">Displacement vs. Creation: A Net Positive Outlook</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">While some roles will be displaced, the overwhelming effect of GenAI will be to augment human capabilities and create entirely new job categories, leading to significant net job growth.</p>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="font-bold text-xl text-center mb-4" style="color: #bc5090;">Net Job Creation by 2030</h3>
+                    <div class="chart-container">
+                        <canvas id="jobCreationChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-gray-500 mt-4">While 92M jobs may be displaced, 170M new ones will be created, resulting in a net gain of 78M jobs globally. (Source: WEF)</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h3 class="font-bold text-lg mb-3 text-red-500">⚠️ High Automation Risk</h3>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>Interpreters & Translators</li>
+                                <li>Writers & Authors</li>
+                                <li>Customer Service Reps</li>
+                                <li>Office & Admin Support</li>
+                                <li>Telemarketers</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-3 text-green-500">✅ Low Automation Risk</h3>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>Construction Laborers</li>
+                                <li>Nursing Assistants</li>
+                                <li>Roofers</li>
+                                <li>Massage Therapists</li>
+                                <li>Phlebotomists</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #003f5c;">The New Skill Economy: Adapt and Thrive</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">Success in the AI era is defined by a new set of skills. Those who adapt are commanding significant salary premiums due to a growing talent shortage.</p>
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="font-bold text-xl text-center mb-4" style="color: #ff6361;">The AI Salary Premium</h3>
+                    <p class="text-center text-sm text-gray-500 mb-4">Roles requiring AI skills pay significantly more than their non-AI counterparts.</p>
+                    <div class="chart-container" style="max-width: 400px; height: 280px;">
+                        <canvas id="salaryPremiumChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col justify-center">
+                    <h3 class="font-bold text-xl mb-4" style="color: #58508d;">Top Skills in Demand</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">💡</span>
+                            <div>
+                                <h4 class="font-semibold">AI Literacy & Fluency</h4>
+                                <p class="text-sm text-gray-600">A fundamental "career survival skill" for all professionals.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">✍️</span>
+                            <div>
+                                <h4 class="font-semibold">Prompt Engineering</h4>
+                                <p class="text-sm text-gray-600">The art of crafting effective instructions for AI models.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">🧠</span>
+                            <div>
+                                <h4 class="font-semibold">Critical Thinking</h4>
+                                <p class="text-sm text-gray-600">Evaluating AI outputs for accuracy, bias, and context.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #003f5c;">Industry Transformation: A Productivity Boom</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">Across sectors, GenAI is augmenting human roles and unlocking massive efficiency gains, freeing professionals to focus on higher-value work.</p>
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="font-bold text-xl text-center mb-6" style="color: #ffa600;">Productivity Gains by Sector</h3>
+                <div class="chart-container" style="max-width: 100%; height: 350px;">
+                    <canvas id="productivityGainsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold text-center mb-8" style="color: #003f5c;">Strategic Imperatives: The Path Forward</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center border-t-4 border-blue-800">
+                    <div class="text-5xl mb-4">👤</div>
+                    <h3 class="font-bold text-lg mb-2">For Individuals</h3>
+                    <p class="text-sm text-gray-600">Embrace continuous learning. Develop AI literacy and cultivate uniquely human skills like creativity and emotional intelligence.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center border-t-4" style="border-color: #bc5090;">
+                    <div class="text-5xl mb-4">🏢</div>
+                    <h3 class="font-bold text-lg mb-2">For Businesses</h3>
+                    <p class="text-sm text-gray-600">Invest in upskilling your workforce. Redesign workflows for human-AI collaboration and foster a culture of innovation.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center border-t-4" style="border-color: #ffa600;">
+                    <div class="text-5xl mb-4">🏛️</div>
+                    <h3 class="font-bold text-lg mb-2">For Policymakers</h3>
+                    <p class="text-sm text-gray-600">Develop agile regulations, strengthen social safety nets, and promote equitable access to AI education to ensure benefits are widely shared.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartColors = {
+                blue: '#003f5c',
+                purple: '#58508d',
+                magenta: '#bc5090',
+                coral: '#ff6361',
+                gold: '#ffa600',
+                lightGray: '#f0f2f5'
+            };
+
+            const defaultTooltipCallback = {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    }
+                    return label;
+                }
+            };
+
+            const wrapLabel = (label) => {
+                const maxLength = 16;
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const jobCreationCtx = document.getElementById('jobCreationChart').getContext('2d');
+            new Chart(jobCreationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['New Jobs Created', 'Jobs Displaced'],
+                    datasets: [{
+                        data: [170, 92],
+                        backgroundColor: [chartColors.purple, chartColors.coral],
+                        borderColor: '#ffffff',
+                        borderWidth: 5,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { callbacks: defaultTooltipCallback }
+                    }
+                }
+            });
+
+            const salaryPremiumCtx = document.getElementById('salaryPremiumChart').getContext('2d');
+            new Chart(salaryPremiumCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['1 AI Skill', '2+ AI Skills'],
+                    datasets: [{
+                        label: 'Salary Premium',
+                        data: [28, 43],
+                        backgroundColor: [chartColors.coral, chartColors.magenta],
+                        borderRadius: 5,
+                        barPercentage: 0.6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { 
+                            callbacks: {
+                                ...defaultTooltipCallback,
+                                label: (context) => `${context.raw}% Higher Salary`
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Average Salary Uplift (%)' }
+                        }
+                    }
+                }
+            });
+
+            const productivityGainsCtx = document.getElementById('productivityGainsChart').getContext('2d');
+            const productivityLabels = ['Customer Service', 'Software Development', 'Creative Industries', 'Legal Services', 'Education'];
+            new Chart(productivityGainsCtx, {
+                type: 'bar',
+                data: {
+                    labels: productivityLabels.map(wrapLabel),
+                    datasets: [{
+                        label: 'Productivity Gain',
+                        data: [40, 30, 20, 10, 15],
+                        backgroundColor: [chartColors.gold, chartColors.coral, chartColors.magenta, chartColors.purple, chartColors.blue],
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { 
+                            callbacks: {
+                                ...defaultTooltipCallback,
+                                label: (context) => `${context.raw}% Productivity Boost`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Productivity Gain (%)' }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
